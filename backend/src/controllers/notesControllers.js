@@ -5,7 +5,8 @@ const getAllNotes = async (req, res) => {
     const notes = await Note.find().sort({ createdAt: -1 }); // -1 newest note appear first(descending order)
     res.status(200).json(notes);
   } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
+      console.error(error);
+      res.status(500).json({ message: "Something went wrong" });
   }
 };
 
